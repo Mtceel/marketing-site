@@ -3,6 +3,7 @@ const path = require('path');
 const helmet = require('helmet');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
+const axios = require('axios');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -54,7 +55,6 @@ app.post('/api/signup', async (req, res) => {
     const { email, password, storeName, subdomain } = req.body;
     
     // Forward to platform-api
-    const axios = require('axios');
     const response = await axios.post('http://platform-api.platform-services.svc.cluster.local:8080/api/auth/register', {
       email,
       password,
@@ -76,7 +76,6 @@ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     
     // Forward to platform-api
-    const axios = require('axios');
     const response = await axios.post('http://platform-api.platform-services.svc.cluster.local:8080/api/auth/login', {
       email,
       password
