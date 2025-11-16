@@ -55,7 +55,7 @@ app.post('/api/signup', async (req, res) => {
     const { email, password, storeName, subdomain } = req.body;
     
     // Forward to platform-api
-    const response = await axios.post('http://platform-api.platform-services.svc.cluster.local:8080/api/auth/register', {
+    const response = await axios.post('http://platform-api.platform-services.svc.cluster.local:8080/api/signup', {
       email,
       password,
       storeName,
@@ -76,7 +76,7 @@ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     
     // Forward to platform-api
-    const response = await axios.post('http://platform-api.platform-services.svc.cluster.local:8080/api/auth/login', {
+    const response = await axios.post('http://platform-api.platform-services.svc.cluster.local:8080/api/login', {
       email,
       password
     });
