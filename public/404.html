@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - SaaSPF</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .error-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 2rem;
+    }
+
+    .error-content {
+      text-align: center;
+      color: white;
+      max-width: 600px;
+    }
+
+    .error-code {
+      font-size: 8rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .error-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .error-message {
+      font-size: 1.25rem;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .error-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .error-links a {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .error-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .btn-home {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-help {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid white;
+    }
+
+    .popular-links {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .popular-links h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .popular-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .popular-links-grid a {
+      color: white;
+      text-decoration: none;
+      padding: 1rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.2s;
+    }
+
+    .popular-links-grid a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 5rem;
+      }
+
+      .error-title {
+        font-size: 2rem;
+      }
+
+      .error-message {
+        font-size: 1.125rem;
+      }
+
+      .error-links {
+        flex-direction: column;
+      }
+
+      .error-links a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <div class="error-content">
+      <div class="error-code">404</div>
+      <h1 class="error-title">Page Not Found</h1>
+      <p class="error-message">
+        Oops! The page you're looking for doesn't exist. It might have been moved or deleted.
+      </p>
+      
+      <div class="error-links">
+        <a href="/" class="btn-home">
+          🏠 Back to Home
+        </a>
+        <a href="/pricing" class="btn-help">
+          📖 View Pricing
+        </a>
+      </div>
+
+      <div class="popular-links">
+        <h3>Popular Pages</h3>
+        <div class="popular-links-grid">
+          <a href="/features">Features</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/signup">Sign Up</a>
+          <a href="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

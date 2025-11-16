@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - FV-Company</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <div class="auth-header">
+        <div class="logo-lg">
+          <span class="logo-icon">🏪</span>
+          <span class="logo-text">FV-Company</span>
+        </div>
+        <h1>Start your free trial</h1>
+        <p>No credit card required. 14 days free.</p>
+      </div>
+
+      <form id="signup-form" class="auth-form">
+        <div class="alert alert-error" id="error-message" style="display: none;"></div>
+        
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Minimum 8 characters" minlength="8">
+        </div>
+
+        <div class="form-group">
+          <label for="storeName">Store name</label>
+          <input type="text" id="storeName" name="storeName" required placeholder="My Awesome Store">
+          <small>This is the name of your store that customers will see</small>
+        </div>
+
+        <div class="form-group">
+          <label for="subdomain">Store URL</label>
+          <div class="input-group">
+            <input type="text" id="subdomain" name="subdomain" required placeholder="mystore" pattern="[a-z0-9-]+" minlength="3" maxlength="63">
+            <span class="input-addon">.fv-company.com</span>
+          </div>
+          <small>Only lowercase letters, numbers, and hyphens allowed</small>
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox">
+            <input type="checkbox" required>
+            <span>I agree to the <a href="/terms" target="_blank">Terms of Service</a> and <a href="/privacy" target="_blank">Privacy Policy</a></span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit-btn">
+          Create your store
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="/login">Log in</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Pre-fill email from URL if provided
+    const urlParams = new URLSearchParams(window.location.search);
+    const emailParam = urlParams.get('email');
+    if (emailParam) {
+      document.getElementById('email').value = emailParam;
+    }
+
+    // Auto-generate subdomain from store name
+    document.getElementById('storeName').addEventListener('input', function(e) {
+      const storeName = e.target.value;
+      const subdomain = storeName
+        .toLowerCase()
+        .replace(/[^a-z0-9-]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '')
+        .substring(0, 63);
+      document.getElementById('subdomain').value = subdomain;
+    });
+
+    // Handle form submission
+    document.getElementById('signup-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submit-btn');
+      const errorMessage = document.getElementById('error-message');
+      
+      // Disable submit button
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating your store...';
+      errorMessage.style.display = 'none';
+      
+      try {
+        const formData = {
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value,
+          storeName: document.getElementById('storeName').value,
+          subdomain: document.getElementById('subdomain').value
+        };
+        
+        const response = await fetch('/api/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          // Success! Store token and redirect to dashboard
+          if (data.token) {
+            localStorage.setItem('auth_token', data.token);
+          }
+          
+          // Show success message briefly
+          errorMessage.style.display = 'block';
+          errorMessage.className = 'alert alert-success';
+          errorMessage.textContent = '🎉 Store created! Redirecting to your dashboard...';
+          
+          // Redirect to merchant dashboard
+          setTimeout(() => {
+            window.location.href = 'https://dashboard.fv-company.com';
+          }, 1500);
+        } else {
+          // Show error
+          errorMessage.style.display = 'block';
+          errorMessage.className = 'alert alert-error';
+          errorMessage.textContent = data.error || 'Signup failed. Please try again.';
+          
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Create your store';
+        }
+      } catch (error) {
+        console.error('Signup error:', error);
+        errorMessage.style.display = 'block';
+        errorMessage.className = 'alert alert-error';
+        errorMessage.textContent = 'Network error. Please check your connection and try again.';
+        
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create your store';
+      }
+    });
+  </script>
+</body>
+</html>

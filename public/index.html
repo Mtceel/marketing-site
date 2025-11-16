@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FV-Company - Start Your Online Store Today</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo">
+          <a href="/">
+            <span class="logo-icon">🏪</span>
+            <span class="logo-text">FV-Company</span>
+          </a>
+        </div>
+        <div class="nav-links">
+          <a href="/features">Features</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/login">Log in</a>
+          <a href="/signup" class="btn btn-primary">Start free trial</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Start selling online with your own store</h1>
+        <p class="hero-subtitle">
+          FV-Company is the all-in-one commerce platform to start, run, and grow your business.
+          Create your store in minutes, no credit card required.
+        </p>
+        <div class="hero-form">
+          <input type="email" id="hero-email" placeholder="Enter your email address" class="input-lg">
+          <button onclick="goToSignup()" class="btn btn-primary btn-lg">Start free trial</button>
+        </div>
+        <p class="hero-note">Try FV-Company free for 14 days, no credit card required.</p>
+      </div>
+      <div class="hero-image">
+        <div class="browser-mockup">
+          <div class="browser-bar">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800" alt="Dashboard Preview">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">10M+</div>
+          <div class="stat-label">Products sold</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">170+</div>
+          <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99.99%</div>
+          <div class="stat-label">Uptime</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Everything you need to sell online</h2>
+      <p class="section-subtitle">Powerful tools to help you grow your business</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🛒</div>
+          <h3>Beautiful Storefronts</h3>
+          <p>Customize your store with our powerful page builder. Drag and drop blocks to create beautiful pages.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h3>Product Management</h3>
+          <p>Add unlimited products with variants, images, and inventory tracking. Organize with collections.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">💳</div>
+          <h3>Secure Payments</h3>
+          <p>Accept payments with Stripe, PayPal, and more. PCI compliant and fully secure.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Analytics & Reports</h3>
+          <p>Track sales, orders, and customer behavior. Make data-driven decisions.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Multi-currency</h3>
+          <p>Sell globally with support for 135+ currencies and automatic conversion.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Lightning Fast</h3>
+          <p>Optimized for speed with CDN, caching, and modern infrastructure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to start your business?</h2>
+        <p>Join thousands of entrepreneurs building their dream with FV-Company</p>
+        <a href="/signup" class="btn btn-white btn-lg">Start free trial</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="/features">Features</a>
+          <a href="/pricing">Pricing</a>
+          <a href="#">Apps</a>
+          <a href="#">Themes</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#">Documentation</a>
+          <a href="#">API Reference</a>
+          <a href="#">Blog</a>
+          <a href="#">Community</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 FV-Company. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function goToSignup() {
+      const email = document.getElementById('hero-email').value;
+      if (email) {
+        window.location.href = `/signup?email=${encodeURIComponent(email)}`;
+      } else {
+        window.location.href = '/signup';
+      }
+    }
+  </script>
+</body>
+</html>
